@@ -22,13 +22,13 @@ export class OrderModel implements IOrder {
     return this.price * this.currencies[this.currency];
   }
 
-  setPrice(price: number) {
+  setPrice = (price: number) => {
     this.price = price;
-  }
+  };
 
-  setCurrency(currency: TCurrency) {
+  setCurrency = (currency: TCurrency) => {
     this.currency = currency;
-  }
+  };
 }
 
 // ====================================================
