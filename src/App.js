@@ -49,19 +49,27 @@ const Currencies = observer(() => {
   return (
     <Table columns={['Currency', 'Rate']}>
       {Object.entries(currencies).map(([currency, rate]) => (
-        <tr key={currency}>
-          <td>{currency}</td>
-          <td>
-            <NumberInput
-              value={rate}
-              onChange={(value) => {
-                currencies[currency] = value
-              }}
-            />
-          </td>
-        </tr>
+        <CurrencyRow key={currency} currency={currency} rate={rate} />
       ))}
     </Table>
+  )
+})
+
+const CurrencyRow = observer(({ rate, currency }) => {
+  const { currencies } = useStore()
+
+  return (
+    <tr key={currency}>
+      <td>{currency}</td>
+      <td>
+        <NumberInput
+          value={rate}
+          onChange={(value) => {
+            currencies[currency] = value
+          }}
+        />
+      </td>
+    </tr>
   )
 })
 
